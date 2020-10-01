@@ -6,7 +6,7 @@ function renderCafe(doc) {
     let li = document.createElement('li');
     let name = document.createElement('span');
     let city = document.createElement('span');
-    let cross = document.createElement('div')
+    let cross = document.createElement('div');
 
     li.setAttribute('data-id', doc.id);
     name.textContent = doc.data().name;
@@ -49,7 +49,6 @@ form.addEventListener('submit', (e) => {
 db.collection('cafes').orderBy('city').onSnapshot( snapshot => {
     let changes = snapshot.docChanges();
     changes.forEach(change => {
-        console.log(change)
         if(change.type == 'added'){
             renderCafe(change.doc);
         }else if(change.type == 'removed'){
